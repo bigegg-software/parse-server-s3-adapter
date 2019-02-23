@@ -2,6 +2,9 @@
 
 parse-server adapter for AWS S3
 
+* add assumeBucketIsPublicRead config
+Some cloud vender has acl policy number limit(eg. qcloud). By setting assumeBucketIsPublicRead to true, this adapter will not issue 'public-read' acl header when creating new file, even when directAccess is true. (also available via env variable S3_ASSUME_BUCKET_IS_PUBLIC_READ)
+
 # installation
 
 `npm install --save @bigegg/s3-files-adapter`
