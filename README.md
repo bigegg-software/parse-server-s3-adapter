@@ -1,14 +1,10 @@
 # parse-server-s3-adapter
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/parse-community/parse-server-s3-adapter.svg)](https://greenkeeper.io/)
-[![codecov.io](https://codecov.io/github/parse-community/parse-server-s3-adapter/coverage.svg?branch=master)](https://codecov.io/github/parse-community/parse-server-s3-adapter?branch=master)
-[![Build Status](https://travis-ci.org/parse-community/parse-server-s3-adapter.svg?branch=master)](https://travis-ci.org/parse-community/parse-server-s3-adapter)
-
 parse-server adapter for AWS S3
 
 # installation
 
-`npm install --save @parse/s3-files-adapter`
+`npm install --save @bigegg/s3-files-adapter`
 
 # AWS Credentials
 
@@ -55,7 +51,7 @@ The preferred method is to use the default AWS credentials pattern.  If no AWS c
   "masterKey": 'my_master_key',
   // other options
   "filesAdapter": {
-    "module": "@parse/s3-files-adapter",
+    "module": "@bigegg/s3-files-adapter",
     "options": {
       "bucket": "my_bucket",
       // optional:
@@ -93,14 +89,14 @@ And update your config / options
   "appId": 'my_app_id',
   "masterKey": 'my_master_key',
   // other options
-  "filesAdapter": "@parse/s3-files-adapter"
+  "filesAdapter": "@bigegg/s3-files-adapter"
 }
 ```
 
 
 ### passing as an instance
 ```
-var S3Adapter = require('@parse/s3-files-adapter');
+var S3Adapter = require('@bigegg/s3-files-adapter');
 
 var s3Adapter = new S3Adapter('accessKey',
                   'secretKey', bucket, {
@@ -135,7 +131,7 @@ In this form if you set `s3overrides.params`, you must set at least `s3overrides
 or with an options hash
 
 ```
-var S3Adapter = require('@parse/s3-files-adapter');
+var S3Adapter = require('@bigegg/s3-files-adapter');
 
 var s3Options = {
   "bucket": "my_bucket",
@@ -159,7 +155,7 @@ var api = new ParseServer({
 ### Usage with Digital Ocean Spaces 
 
 ```
-var S3Adapter = require("@parse/s3-files-adapter");
+var S3Adapter = require("@bigegg/s3-files-adapter");
 var AWS = require("aws-sdk");
 
 //Configure Digital Ocean Spaces EndPoint

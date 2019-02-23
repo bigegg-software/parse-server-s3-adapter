@@ -27,6 +27,12 @@ function S3Adapter() {
   this._globalCacheControl = options.globalCacheControl;
   this._encryption = options.ServerSideEncryption;
 
+  // some cloud vender has acl policy number limit.(eg. qcloud)
+  // By setting _assumeBucketIsPublicRead to true,
+  // this adapter will not issue 'public-read' acl header when creating new file,
+  // even when _directAccess is true.
+  this._assumeBucketIsPublicRead = options.assumeBucketIsPublicRead;
+
   let s3Options = {
     params: { Bucket: this._bucket },
     region: this._region,
@@ -68,7 +74,7 @@ S3Adapter.prototype.createFile = function(filename, data, contentType) {
     Key: this._bucketPrefix + filename,
     Body: data
   };
-  if (this._directAccess) {
+  if (this._directAccess && !this._assumeBucketIsPublicRead) {
     params.ACL = "public-read"
   }
   if (contentType) {
